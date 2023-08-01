@@ -6,10 +6,7 @@ router.use(bodyParser.json({ limit: '50mb' }));
 router.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 router.use(express.json({ limit: '50mb' }));
 
-const products = new Map([
-  [1, { priceInCents: 10000, name: "Learn React Today", description: "Learn React Today", imgBase64:"" }],
-  [2, { priceInCents: 20000, name: "Learn CSS Today", description: "Learn CSS Today", imgBase64:"" }],
-]);
+const products = new Map([]);
 
 router.get('/get', async (req, res) => {
     try {
@@ -21,11 +18,12 @@ router.get('/get', async (req, res) => {
 
 router.post('/post', async (req, res) => {
   try {
-    const { name, price, description, imgBase64 } = req.body;
-    console.log(`Received form data: name=${name}, price=${price}, description=${description}, imgBase64=${imgBase64}`);
+    const { id, name, price, description, imgBase64 } = req.body;
+    console.log(`Received form data: id=${id}, name=${name}, price=${price}, description=${description}, imgBase64=img`);
 
     const newItem = {
-      priceInCents: price * 100,
+      id: id,
+      price: price,
       name: name,
       description: description,
       imgBase64: imgBase64
