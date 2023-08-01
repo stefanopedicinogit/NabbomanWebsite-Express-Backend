@@ -25,8 +25,8 @@ router.post('/', async (req, res) => {
           quantity: item.quantity,
         }
       }),
-      success_url: `http://localhost:3000/checkout-success`,
-      cancel_url: `http://localhost:3000/checkout-cancel`,
+      success_url: `https://nabbomanwebsite.vercel.app/checkoutsuccess`,
+      cancel_url: `https://nabbomanwebsite.vercel.app/checkoutcancel`,
     })
     res.json({ url: session.url })
   } catch (e) {
